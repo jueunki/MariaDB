@@ -1,0 +1,69 @@
+== IP,도메인==
+
+IP는 공인/사설/특수IP로 나뉜다.
+
+www.naver.com -> 도메인 특정아이피와 연결되어있다
+localhost -> 127.0.0.1 로 연결되어있다.(나를 의미한다)
+
+
+mysql -h -> host를 의미한다.
+
+예를 들어서 3대의 컴퓨터가 각각 1.1.1.1 // 1.1.1.2 // 1.1.1.3 있다고 가정했을 때
+mysql -h 1.1.1.1 -u root 라고 작성하면 1.1.1.1컴퓨터로 접속이 되는것이다.
+1.1.1.2 // 1.1.1.3 또한 같다.
+컴퓨터를 여러대 사용 할 수 없어서 한곳에 접속기도 깔고 서버도 까는데,
+mysql -h 127.0.0.1 -u root 라고 하게되면 컴퓨터로 갔다가 다시 서버로 이동한다.
+
+mysql -h localhost -u root 라고 쓸 수 있다.(127.0.0.1로 쓸 수도있고 localhost로도 쓸 수 있고 생략도 가능하다.) 
+
+
+ex.
+ㅁ		ㅁ
+접속기		1.1.1.1
+ㅁ		ㅁ
+서버		1.1.1.2
+		ㅁ
+		1.1.1.3
+
+
+MySQLyog를 다운로드 받았다. 이는 mysql 클라이언트를 다운로드한것이다.
+xampp에서 start를 누른것은 서버가 켜진것이다.
+집속기가 불편해서 접속기를 하나 더 다운로드 한것이라고 보면된다.
+
+
+xampp => 명령어를 직접 외워서 적어야하는 단점
+MySQLyog => 새로운 연결을 클릭했을때 기본설정을 쉽게할수있는 장점
+xampp가 Start되어있어야 MySQLyog가 연결이 된다.
+MySQLyog는 MySQL이 아니라 접속할수있게 해주는 접속기에 불과하다는것을 인지해야한다.
+xampp 안에 DB가 연결되어있는것이 아니다.
+
+GRANT ALL PRIVILEGES ON *.* TO sbsst IDENTIFIED BY 'sbs123414'; 
+모든권한을 부여하다
+
+
+
+
+
+
+
+최상단에는 MySQL
+데이터베이스 : 수정이없다.	
+		- 생성 : CREATE DATABASE a1; #생성
+		- 삭제 : DATABASE IF EXISTS a1;
+		- 조회 : SHOW DATABASES;
+
+
+테이블 : 수정이 있다.
+		- 생성 : CREATE TABLE article(title CHAR(200), `body` TEXT);
+		- 삭제 : DROP TABLE article(~, ~, ~);   -> article을 삭제하는것
+		- 조회 : SHOW TABLES;
+		- 추가 : ALTER TABLE article ADD COLUMN id INT(10) FIRST;
+		- 삭제 : ALTER TABLE article DROP COLUMN id;		-> id를 삭제하는것
+		- 수정 : ALTER TABLE article MODIFY COLUMN id id INT(10);
+
+데이터
+		- 생성 : INSERT INTO article SET title = '제목1', `body` = '내용1';
+		- 수정 : UPDATE article = '새 제목1' WHERE id = 2; -> id가 2번인것만 새 제목1로 바뀐다는것.
+		- 삭제 : DELETE FROM article WHERE id = 1;
+		- 조회 : SELECT * FROM article;
+순서로 있다.
