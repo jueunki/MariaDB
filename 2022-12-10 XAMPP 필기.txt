@@ -1,0 +1,32 @@
+==xampp==
+
+1/다운로드 중 mySQL을 제외한 모든 항목 체크해제
+MySQL Config클릭 후 
+[mysqld] 하단에
+lower_case_table_names = 2 이렇게 적어준다.(대.소문자 자유롭게 적기위해 입력해준다.)
+
+## UTF 8 Settings 의 하단에 붙어있는 # 전체 제거
+init-connect=\'SET NAMES utf8\'
+collation_server=utf8_unicode_ci
+character_set_server=utf8
+skip-character-set-client-handshake
+character_sets-dir="C:/xampp/mysql/share/charsets"
+sql_mode=NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION
+log_bin_trust_function_creators=1	완료(한글관련)
+
+2/cmd창 열어서
+C:\xampp\mysql\bin>cd \xampp\mysql\bin 작성
+C:\xampp\mysql\bin>mysql -u root -p + enter하면 password창이 뜨고 초기설정이 없기때문에
+공백으로 enter치면 접속이 된다.
+
+3/MySQL은 서버(아파치,nginx)와 클라이언트(브라우저)로 나뉜다.
+XAMPP는 서버와 클라이언트를 동시에 설치한것이다.
+MySQL접속기를 공부하고있는것이다.
+MySQL은 데이터베이스(DB)와 같지않다. -> MySQL은 DBMS(데이터베이스 매니지먼트 시스템)=관리 시스템이다.
+
+4/XAMPP서버를 끈 상태에서 show databases; 를 입력하게 되면 서버가 꺼져있어서 접속오류가 뜬다. 
+start를 항상 켜준다음 cmd를 사용하여 접속후 확인이 가능하다.
+
+5/C:\xampp\mysql\bin>mysql + tab을 누르면 mysql.exe라고 나오는데 윈도우에서는 .exe를 생략할수있다.
+cmd창이 지저분해졌을시 cls + enter 클린하게 만든다.
+
